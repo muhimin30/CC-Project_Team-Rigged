@@ -140,5 +140,7 @@ expr:
 
 void yyerror(const char *s) {
     fprintf(stderr, "Syntax Error (line %d): %s near '%s'\n", yylineno, s, yytext);
+
+    
     syntax_error_count++;
 }
