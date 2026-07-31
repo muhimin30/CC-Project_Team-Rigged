@@ -11,11 +11,8 @@ extern FILE *yyin;
 
 void yyerror(const char *s);
 
-/* Root of the AST, filled in by the `program` rule and read by main(). */
 Node *ast_root = NULL;
 
-/* Number of syntax errors reported by yyerror(); main() checks this
- * before proceeding to semantic analysis / codegen. */
 int syntax_error_count = 0;
 
 static Node *mkbin(const char *op, Node *l, Node *r) {
