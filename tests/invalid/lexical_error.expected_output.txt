@@ -1,0 +1,8 @@
+Lexical Error (line 3): unexpected character '$'
+Syntax Error (line 3): syntax error near '3'
+Syntax Error (line 3): skipping malformed statement, resuming after ';'
+
+1 lexical error(s) found.
+
+Compilation failed: 1 syntax error(s) found. Stopping before semantic analysis.
+Compiling 'tests/invalid/lexical_error.mc' ...
