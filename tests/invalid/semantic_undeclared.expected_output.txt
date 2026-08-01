@@ -1,0 +1,23 @@
+Semantic Error (line 4): assignment to undeclared variable 'y'
+Semantic Error (line 5): undeclared variable 'y' used
+
+Compilation failed: 2 semantic error(s) found.
+Compiling 'tests/invalid/semantic_undeclared.mc' ...
+
+============================================================
+ ABSTRACT SYNTAX TREE
+============================================================
+[Program]
+  [Decl] int x (line 2)
+  [Assign] x = (line 3)
+    [IntLit] 5 (line 3)
+  [Assign] y = (line 4)
+    [BinOp +] (line 4)
+      [Id] x (line 4)
+      [IntLit] 1 (line 4)
+  [Print] (line 5)
+    [Id] y (line 5)
+
+============================================================
+ SEMANTIC ANALYSIS
+============================================================

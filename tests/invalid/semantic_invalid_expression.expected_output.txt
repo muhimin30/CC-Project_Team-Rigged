@@ -1,0 +1,40 @@
+Semantic Error (line 7): logical operator '&&' requires bool operands, got int and int
+Semantic Error (line 12): while-condition must be bool, got int
+
+Compilation failed: 2 semantic error(s) found.
+Compiling 'tests/invalid/semantic_invalid_expression.mc' ...
+
+============================================================
+ ABSTRACT SYNTAX TREE
+============================================================
+[Program]
+  [Decl] int a (line 3)
+  [Decl] int b (line 4)
+  [Assign] a = (line 5)
+    [IntLit] 1 (line 5)
+  [Assign] b = (line 6)
+    [IntLit] 2 (line 6)
+  [If] (line 10)
+    cond:
+      [BinOp &&] (line 7)
+        [Id] a (line 7)
+        [Id] b (line 7)
+    then:
+      [Block]
+        [Print] (line 8)
+          [Id] a (line 8)
+  [While] (line 12)
+    cond:
+      [BinOp +] (line 10)
+        [Id] a (line 10)
+        [Id] b (line 10)
+    body:
+      [Block]
+        [Assign] a = (line 11)
+          [BinOp -] (line 11)
+            [Id] a (line 11)
+            [IntLit] 1 (line 11)
+
+============================================================
+ SEMANTIC ANALYSIS
+============================================================

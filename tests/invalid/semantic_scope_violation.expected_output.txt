@@ -1,0 +1,32 @@
+Semantic Error (line 10): undeclared variable 'count' used
+
+Compilation failed: 1 semantic error(s) found.
+Compiling 'tests/invalid/semantic_scope_violation.mc' ...
+
+============================================================
+ ABSTRACT SYNTAX TREE
+============================================================
+[Program]
+  [Decl] int n (line 3)
+  [Assign] n = (line 4)
+    [IntLit] 3 (line 4)
+  [While] (line 9)
+    cond:
+      [BinOp >] (line 5)
+        [Id] n (line 5)
+        [IntLit] 0 (line 5)
+    body:
+      [Block]
+        [Decl] int count (line 6)
+        [Assign] count = (line 7)
+          [Id] n (line 7)
+        [Assign] n = (line 8)
+          [BinOp -] (line 8)
+            [Id] n (line 8)
+            [IntLit] 1 (line 8)
+  [Print] (line 10)
+    [Id] count (line 10)
+
+============================================================
+ SEMANTIC ANALYSIS
+============================================================

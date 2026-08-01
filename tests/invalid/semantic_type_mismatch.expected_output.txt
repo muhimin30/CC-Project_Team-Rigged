@@ -1,0 +1,22 @@
+Semantic Error (line 3): invalid assignment: cannot assign int to 'b' of type bool
+Semantic Error (line 5): invalid assignment: cannot assign bool to 'i' of type int
+
+Compilation failed: 2 semantic error(s) found.
+Compiling 'tests/invalid/semantic_type_mismatch.mc' ...
+
+============================================================
+ ABSTRACT SYNTAX TREE
+============================================================
+[Program]
+  [Decl] bool b (line 2)
+  [Assign] b = (line 3)
+    [BinOp +] (line 3)
+      [IntLit] 5 (line 3)
+      [IntLit] 3 (line 3)
+  [Decl] int i (line 4)
+  [Assign] i = (line 5)
+    [BoolLit] true (line 5)
+
+============================================================
+ SEMANTIC ANALYSIS
+============================================================
