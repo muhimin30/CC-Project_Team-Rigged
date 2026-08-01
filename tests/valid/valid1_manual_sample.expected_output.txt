@@ -1,0 +1,73 @@
+Compiling 'tests/valid/valid1_manual_sample.mc' ...
+
+============================================================
+ ABSTRACT SYNTAX TREE
+============================================================
+[Program]
+  [Decl] int x (line 2)
+  [Decl] int y (line 3)
+  [Decl] bool flag (line 4)
+  [Assign] x = (line 6)
+    [IntLit] 10 (line 6)
+  [Assign] y = (line 7)
+    [IntLit] 0 (line 7)
+  [Assign] flag = (line 8)
+    [BoolLit] true (line 8)
+  [While] (line 13)
+    cond:
+      [BinOp >] (line 10)
+        [Id] x (line 10)
+        [IntLit] 0 (line 10)
+    body:
+      [Block]
+        [Assign] y = (line 11)
+          [BinOp +] (line 11)
+            [Id] y (line 11)
+            [Id] x (line 11)
+        [Assign] x = (line 12)
+          [BinOp -] (line 12)
+            [Id] x (line 12)
+            [IntLit] 1 (line 12)
+  [If] (line 19)
+    cond:
+      [BinOp ==] (line 15)
+        [Id] flag (line 15)
+        [BoolLit] true (line 15)
+    then:
+      [Block]
+        [Print] (line 16)
+          [Id] y (line 16)
+    else:
+      [Block]
+        [Print] (line 18)
+          [Id] x (line 18)
+
+============================================================
+ SEMANTIC ANALYSIS
+============================================================
+No semantic errors found.
+
+============================================================
+ THREE ADDRESS CODE (TAC)
+============================================================
+x = 10
+y = 0
+flag = true
+L1:
+t1 = x > 0
+ifFalse t1 goto L2
+t2 = y + x
+y = t2
+t3 = x - 1
+x = t3
+goto L1
+L2:
+t4 = flag == true
+ifFalse t4 goto L3
+print y
+goto L4
+L3:
+print x
+L4:
+
+Compilation finished successfully.
