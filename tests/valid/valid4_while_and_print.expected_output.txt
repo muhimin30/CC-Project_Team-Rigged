@@ -1,0 +1,45 @@
+Compiling 'tests/valid/valid4_while_and_print.mc' ...
+
+============================================================
+ ABSTRACT SYNTAX TREE
+============================================================
+[Program]
+  [Decl] int n (line 2)
+  [Assign] n = (line 3)
+    [IntLit] 5 (line 3)
+  [While] (line 10)
+    cond:
+      [BinOp >] (line 7)
+        [Id] n (line 7)
+        [IntLit] 0 (line 7)
+    body:
+      [Block]
+        [Print] (line 8)
+          [Id] n (line 8)
+        [Assign] n = (line 9)
+          [BinOp -] (line 9)
+            [Id] n (line 9)
+            [IntLit] 1 (line 9)
+  [Print] (line 11)
+    [Id] n (line 11)
+
+============================================================
+ SEMANTIC ANALYSIS
+============================================================
+No semantic errors found.
+
+============================================================
+ THREE ADDRESS CODE (TAC)
+============================================================
+n = 5
+L1:
+t1 = n > 0
+ifFalse t1 goto L2
+print n
+t2 = n - 1
+n = t2
+goto L1
+L2:
+print n
+
+Compilation finished successfully.
