@@ -145,3 +145,11 @@ static void gen_stmt(Node *n) {
                     nodetype_str(n->type));
     }
 }
+
+void generate_tac(Node *program) {
+    temp_count = 0;
+    label_count = 0;
+    for (int i = 0; i < program->stmt_count; i++) {
+        gen_stmt(program->stmts[i]);
+    }
+}
