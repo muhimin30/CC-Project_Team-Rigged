@@ -102,3 +102,46 @@ static void gen_while(Node *n) {
     printf("goto %s\n", l1);
     printf("%s:\n", l2);
 }
+
+static void gen_stmt(Node *n) {
+    if (!n) return;
+
+    switch (n->type) {
+        case ND_DECL:
+            if (n->right) {
+                char *v = gen_expr(n->right);
+                printf("%s = %s\n", n->resolved_name ? n->resolved_name : n->name, v);
+            }
+            /* A bare declaration with no initializer produces no TAC: it
+             * only reserves an entry in the symbol table. */
+            break;
+
+        case ND_ASSIGN: {
+            char *v = gen_expr(n->right);
+            printf("%s = %s\n", n->resolved_name ? n->resolved_name : n->name, v);
+            break;
+        }
+
+        case ND_IF:
+            gen_if(n);
+            break;
+
+        case ND_WHILE:
+            gen_while(n);
+            break;
+
+        case ND_PRINT: {
+            char *v = gen_expr(n->right);
+            printf("print %s\n", v);
+            break;
+        }
+
+        case ND_BLOCK:
+            for (int i = 0; i < n->stmt_count; i++) gen_stmt(n->stmts[i]);
+            break;
+
+        default:
+            fprintf(stderr, "codegen: unexpected node %s used as statement\n",
+                    nodetype_str(n->type));
+    }
+}
