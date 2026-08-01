@@ -1,0 +1,8 @@
+Syntax Error (line 3): syntax error near 'x'
+Syntax Error (line 3): skipping malformed statement, resuming after ';'
+Syntax Error (line 4): syntax error near ')'
+Syntax Error (line 5): skipping malformed statement, resuming after ';'
+Syntax Error (line 6): syntax error near '}'
+
+Compilation failed: 3 syntax error(s) found. Stopping before semantic analysis.
+Compiling 'tests/invalid/syntax_error.mc' ...
